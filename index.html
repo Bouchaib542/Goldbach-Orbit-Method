@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Goldbach Orbit Method</title>
+  <style>
+    body { font-family: sans-serif; margin: 40px; }
+    input { font-size: 1em; width: 400px; }
+    #result { margin-top: 20px; font-weight: bold; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>Goldbach Orbit Method (√E Guided, Extended to 10¹⁹+)</h1>
+  <p>Enter a large even number E (e.g., 10000000000000000000):</p>
+  <input type="text" id="evenInput" />
+  <button onclick="startSearch()">Find Goldbach Pair</button>
+  <div id="result"></div>
+
+  <script>
+    function isPrime(n) {
+      if (n < 2n) return false;
+      if (n === 2n || n === 3n) return true;
+      if (n % 2n === 0n) return false;
+      const sqrtN = BigInt(Math.floor(Math.sqrt(Number(n))));
+      for (let i = 3n; i <= sqrtN; i += 2n) {
+        if (n % i === 0n) return false;
+      }
+      return true;
+    }
+
+    function log(x) {
+      return Math.log(Number(x));
+    }
+
+    function loglog(x) {
+      return Math.log(Math.log(Number(x)));
+    }
+
+    let E, halfE, delta, maxT, batchSize = 1000, t = 0;
+
+    function startSearch() {
+      const input = document.getElementById("evenInput").value;
+      try {
+        E = BigInt(input);
+      } catch (e) {
+        document.getElementById("result").textContent = "Invalid input.";
+        return;
+      }
+      halfE = E / 2n;
+      delta = Math.floor(Math.sqrt(Number(E)) * (loglog(E) / log(E)));
+      maxT = delta * 5;
+      t = 0;
+      document.getElementById("result").textContent =
+        `Searching around E/2 ± δ(E) with δ ≈ ${delta}`;
+      setTimeout(() => searchBatch(), 10);
+    }
+
+    function searchBatch() {
+      const resultDiv = document.getElementById("result");
+      let found = false;
+
+      for (let i = 0; i < batchSize && t <= maxT; i++, t++) {
+        const p = halfE - BigInt(t);
+        const q = E - p;
+
+        if (isPrime(p) && isPrime(q)) {
+          let layer = "central orbit";
+          if (t === 0) layer = "central orbit";
+          else if (t <= delta) layer = "orbital layer";
+          else layer = "peripheral region";
+
+          resultDiv.innerHTML = `✅ Found pair:\n<b>p</b> = ${p.toString()}\n<b>q</b> = ${q.toString()}\n➤ Orbit layer: <b>${layer}</b> (t = ${t})`;
+          found = true;
+          return;
+        }
+      }
+
+      if (!found && t <= maxT) {
+        setTimeout(() => searchBatch(), 10);
+      } else if (!found) {
+        resultDiv.textContent = "❌ No pair found within search bounds.";
+      }
+    }
+  </script>
+</body>
+</html>
