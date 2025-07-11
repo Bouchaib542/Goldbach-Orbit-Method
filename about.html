@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About – Goldbach Orbit Method</title>
+  <style>
+    body { font-family: sans-serif; margin: 40px; max-width: 800px; }
+    h1 { color: darkred; }
+    .button {
+      margin-top: 30px;
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #d44;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+    .button:hover {
+      background-color: #a22;
+    }
+  </style>
+</head>
+<body>
+  <h1>About the Goldbach Orbit Method</h1>
+
+  <p>
+    This site demonstrates a new approach to verifying the famous <b>Goldbach Conjecture</b>, which states:
+  </p>
+
+  <blockquote>
+    <i>Every even number greater than 2 can be written as the sum of two prime numbers.</i>
+  </blockquote>
+
+  <p>
+    Instead of testing all possible pairs (p, q) such that p + q = E, the <b>Goldbach Orbit Method</b> introduces a <b>predictive strategy</b> based on the square root of E:
+  </p>
+
+  <h3>Key idea: Orbit layers around E/2</h3>
+  <p>
+    We center the search around E/2 and define a theoretical distance:
+    <br><br>
+    <code>δ(E) = √E × (log log E) / log E</code>
+    <br><br>
+    This tells us where to expect the first valid pair (p, q) to appear.
+  </p>
+
+  <h3>Layer Classification</h3>
+  <ul>
+    <li><b>Central orbit:</b> when p = q = E/2</li>
+    <li><b>Orbital layer:</b> when |p − E/2| ≤ δ(E)</li>
+    <li><b>Peripheral region:</b> when the pair lies further away</li>
+  </ul>
+
+  <p>
+    This classification reveals a hidden structure in how primes align around even numbers. In most cases, the first solution appears inside the central or orbital layer.
+  </p>
+
+  <h3>Technical Aspects</h3>
+  <p>
+    - The algorithm uses <code>BigInt</code> in JavaScript to support huge numbers.<br>
+    - The search is split into small batches to avoid freezing your browser.<br>
+    - It works well even for values like <code>E = 10<sup>19</sup></code> and beyond.
+  </p>
+
+  <h3>Author</h3>
+  <p>
+    Bahbouhi Bouchaib – Independent researcher, Nantes, France.<br>
+    This method is public, free to use, and was developed independently in 2025.
+  </p>
+
+  <a href="index.html" class="button">← Back to Calculator</a>
+</body>
+</html>
