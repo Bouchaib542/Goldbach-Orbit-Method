@@ -1,74 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>About – Goldbach Orbit Method</title>
+  <meta charset="UTF-8" />
+  <title>About the Goldbach Orbit Method</title>
+  <meta name="description" content="Discover the Goldbach Orbit Method developed by Bouchaib Bouchaib, a predictive algorithm using √E to explore the Goldbach Conjecture for very large even numbers." />
+  <meta name="keywords" content="Goldbach Conjecture, Orbit Method, prime numbers, Bouchaib Bouchaib, sqrt(E), number theory, prime decomposition, JavaScript, GitHub" />
+  <meta name="author" content="Bouchaib Bouchaib" />
   <style>
-    body { font-family: sans-serif; margin: 40px; max-width: 800px; }
-    h1 { color: darkred; }
-    .button {
-      margin-top: 30px;
-      display: inline-block;
-      padding: 10px 20px;
-      font-size: 1em;
-      background-color: #d44;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-    }
-    .button:hover {
-      background-color: #a22;
-    }
+    body { font-family: sans-serif; max-width: 800px; margin: 40px auto; line-height: 1.6; }
+    h1, h2 { color: darkred; }
+    a { color: blue; text-decoration: none; }
   </style>
 </head>
 <body>
   <h1>About the Goldbach Orbit Method</h1>
 
-  <p>
-    This site demonstrates a new approach to verifying the famous <b>Goldbach Conjecture</b>, which states:
-  </p>
+  <p>This project presents the <strong>Goldbach Orbit Method</strong>, a predictive algorithm to find prime pairs <em>(p, q)</em> such that <em>p + q = E</em>, where <em>E</em> is a very large even number. The method is inspired by the structure of orbital shells and guided by the square root of E, exploring central, orbital, and peripheral zones to identify solutions.</p>
 
-  <blockquote>
-    <i>Every even number greater than 2 can be written as the sum of two prime numbers.</i>
-  </blockquote>
+  <h2>Author</h2>
+  <p><strong>Bouchaib Bouchaib</strong> is an independent researcher in mathematics based in Nantes, France. He has developed several innovative methods around number theory, biprime factorization, and Goldbach decompositions. This site is part of his public research efforts.</p>
 
-  <p>
-    Instead of testing all possible pairs (p, q) such that p + q = E, the <b>Goldbach Orbit Method</b> introduces a <b>predictive strategy</b> based on the square root of E:
-  </p>
+  <h2>About the Site</h2>
+  <p>The website allows anyone to enter a very large even number and instantly test the Goldbach Orbit Method online. It uses modern JavaScript with BigInt and root-based estimations to extend predictions beyond <strong>10¹⁹</strong>.</p>
 
-  <h3>Key idea: Orbit layers around E/2</h3>
-  <p>
-    We center the search around E/2 and define a theoretical distance:
-    <br><br>
-    <code>δ(E) = √E × (log log E) / log E</code>
-    <br><br>
-    This tells us where to expect the first valid pair (p, q) to appear.
-  </p>
+  <p>This method is entirely public, experimental, and mathematically inspired. You can access the main calculator here:  
+  <a href="index.html">Go to the Goldbach Calculator</a></p>
 
-  <h3>Layer Classification</h3>
-  <ul>
-    <li><b>Central orbit:</b> when p = q = E/2</li>
-    <li><b>Orbital layer:</b> when |p − E/2| ≤ δ(E)</li>
-    <li><b>Peripheral region:</b> when the pair lies further away</li>
-  </ul>
-
-  <p>
-    This classification reveals a hidden structure in how primes align around even numbers. In most cases, the first solution appears inside the central or orbital layer.
-  </p>
-
-  <h3>Technical Aspects</h3>
-  <p>
-    - The algorithm uses <code>BigInt</code> in JavaScript to support huge numbers.<br>
-    - The search is split into small batches to avoid freezing your browser.<br>
-    - It works well even for values like <code>E = 10<sup>19</sup></code> and beyond.
-  </p>
-
-  <h3>Author</h3>
-  <p>
-    Bahbouhi Bouchaib – Independent researcher, Nantes, France.<br>
-    This method is public, free to use, and was developed independently in 2025.
-  </p>
-
-  <a href="index.html" class="button">← Back to Calculator</a>
+  <hr />
+  <p>© 2025 Bouchaib Bouchaib. All rights reserved. This work is public and open for scientific exploration.</p>
 </body>
 </html>
