@@ -11,6 +11,14 @@
     body { font-family: sans-serif; margin: 40px; }
     input { font-size: 1em; width: 400px; }
     #result { margin-top: 20px; font-weight: bold; white-space: pre-wrap; }
+    .seo-block {
+      margin-top: 40px;
+      font-size: 0.95em;
+      color: #444;
+      background: #f8f8f8;
+      border: 1px solid #ddd;
+      padding: 20px;
+    }
   </style>
 </head>
 <body>
@@ -19,6 +27,13 @@
   <input type="text" id="evenInput" />
   <button onclick="startSearch()">Find Goldbach Pair</button>
   <div id="result"></div>
+
+  <div class="seo-block">
+    <h2>About this tool</h2>
+    <p>This website demonstrates the <strong>Goldbach Orbit Method</strong>, a novel and powerful algorithmic approach to predicting prime pairs (p, q) such that <code>p + q = E</code> for large even numbers E. Based on orbital structure around √E, this method extends verification of the Goldbach Conjecture up to <strong>10<sup>19</sup></strong> and beyond.</p>
+    <p><a href="https://bouchaib542.github.io/goldbach-sqrt-predictor/" target="_blank">Try also our square-root predictor here</a>.</p>
+    <p>Created by Bahbouhi Bouchaib, Independent Researcher, Nantes, France.</p>
+  </div>
 
   <script>
     function isPrime(n) {
